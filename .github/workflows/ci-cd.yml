@@ -21,8 +21,8 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t ranaliw/patient-record-service:${{ github.sha }} .
-        docker push ranaliw/patient-record-service:${{ github.sha }}
+        docker build -t ranaliw/notification-service:${{ github.sha }} .
+        docker push ranaliw/notification-service:${{ github.sha }}
         
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v3
@@ -40,4 +40,4 @@ jobs:
 
     - name: Update Kubernetes Deployment
       run: |
-        kubectl set image deployment/patient-record-service-blue patient-record-service=ranaliw/patient-record-service:${{ github.sha }}
+        kubectl set image deployment/notification-service-blue notification-service=ranaliw/notification-service:${{ github.sha }}
